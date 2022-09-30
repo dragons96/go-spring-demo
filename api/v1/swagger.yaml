@@ -1,0 +1,121 @@
+basePath: /api/v1/bread
+definitions:
+  controller.QueryReq:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  controller.SaveReq:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  web.RpcResult:
+    properties:
+      code:
+        description: 错误码
+        type: integer
+      data:
+        description: 返回值
+      err:
+        description: 错误源
+        type: string
+      msg:
+        description: 错误信息
+        type: string
+    type: object
+host: 127.0.0.1:8080
+info:
+  contact:
+    email: 521274311@qq.com
+    name: github.com/go-spring/go-spring
+    url: https://github.com/go-spring/go-spring
+  description: This is a go-spring demo.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://github.com/go-spring/go-spring
+  title: Bread Server
+  version: 0.0.1
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.RpcResult'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: queries all bread
+      tags:
+      - Bread.QueryAll
+    post:
+      parameters:
+      - description: Save Params
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/controller.SaveReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.RpcResult'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: saves bread
+      tags:
+      - Bread.Save
+  /id/{id}:
+    get:
+      parameters:
+      - description: Query Params
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/controller.QueryReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.RpcResult'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: queries some bread
+      tags:
+      - Bread.Query
+  /name/{name}:
+    get:
+      parameters:
+      - description: Query Params
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/controller.QueryReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.RpcResult'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: queries some bread
+      tags:
+      - Bread.Query
+swagger: "2.0"

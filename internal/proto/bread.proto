@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package bread;
+
+import "internal/proto/common.proto";
+
+service Bread {
+  rpc Save(SaveBreadReq) returns(common.CommonOneResp);
+  rpc QueryAll(QueryAllBreadReq) returns(common.CommonManyResp);
+  rpc Query(QueryBreadReq) returns(common.CommonOneResp);
+}
+
+message SaveBreadReq {
+  uint64 id = 1;
+  string name = 2;
+}
+
+message QueryBreadReq {
+  oneof query {
+    uint64 id = 1;
+    string name = 2;
+  }
+}
+
+message QueryAllBreadReq {}
+
+message BreadStore {
+  uint64 id = 1;
+  string name = 2;
+}

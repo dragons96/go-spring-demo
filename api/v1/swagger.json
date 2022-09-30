@@ -1,0 +1,185 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a go-spring demo.",
+        "title": "Bread Server",
+        "termsOfService": "https://github.com/go-spring/go-spring",
+        "contact": {
+            "name": "github.com/go-spring/go-spring",
+            "url": "https://github.com/go-spring/go-spring",
+            "email": "521274311@qq.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "0.0.1"
+    },
+    "host": "127.0.0.1:8080",
+    "basePath": "/api/v1/bread",
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Bread.QueryAll"
+                ],
+                "summary": "queries all bread",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/web.RpcResult"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bread.Save"
+                ],
+                "summary": "saves bread",
+                "parameters": [
+                    {
+                        "description": "Save Params",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.SaveReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/web.RpcResult"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/id/{id}": {
+            "get": {
+                "tags": [
+                    "Bread.Query"
+                ],
+                "summary": "queries some bread",
+                "parameters": [
+                    {
+                        "description": "Query Params",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.QueryReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/web.RpcResult"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/name/{name}": {
+            "get": {
+                "tags": [
+                    "Bread.Query"
+                ],
+                "summary": "queries some bread",
+                "parameters": [
+                    {
+                        "description": "Query Params",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.QueryReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/web.RpcResult"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controller.QueryReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.SaveReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "web.RpcResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "错误码",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "返回值"
+                },
+                "err": {
+                    "description": "错误源",
+                    "type": "string"
+                },
+                "msg": {
+                    "description": "错误信息",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
