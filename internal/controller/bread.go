@@ -11,7 +11,7 @@ import (
 	"go-spring-demo/internal/service"
 )
 
-func init() {
+func InitBread() {
 	gs.Provide(NewBreadController).Init(func(c *BreadController) {
 		log.GetLogger("BreadController").Infof("BreadController initialized successfully")
 		gs.PostBinding("/api/v1/bread", c.Save)

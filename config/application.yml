@@ -5,3 +5,6 @@ web:
 grpc:
   server:
     port: 8081
+  endpoint:
+    bread:
+      address: localhost:8081

@@ -6,12 +6,26 @@ package common;
 
 import "google/protobuf/any.proto";
 
+/**
+{
+  "code": 0,
+  "msg": "success",
+  "data": {}
+}
+ */
 message CommonOneResp {
   uint32 code = 1;
   string msg = 2;
   google.protobuf.Any data = 3;
 }
 
+/**
+{
+  "code": 0,
+  "msg": "success",
+  "data": []
+}
+ */
 message CommonManyResp {
   uint32 code = 1;
   string msg = 2;

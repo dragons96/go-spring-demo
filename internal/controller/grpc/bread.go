@@ -1,4 +1,4 @@
-package adapter
+package grpc
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 	"google.golang.org/protobuf/types/known/anypb"
 )
 
-func Init() {
+func InitBread() {
 	gs.Provide(NewGrpcBreadServer).Init(func(s __.BreadServer) {
 		gs.GrpcServer("bread.Bread", &grpc.Server{
 			Register: __.RegisterBreadServer,
